@@ -1,0 +1,14 @@
+TODOs
+
+1.  An "intro" section that contains the following content:
+        Who you are
+        Where you are located
+2.  An "about me" section that contains the following content:
+        A description that demonstrates your passion for web development and your willingness to work with others
+        A sentence or two that describes other interests you have outside of development
+3.  A "contact" section that contains the following content:
+        A link to your LinkedIn profile
+        A link to your GitHub profile
+        A link to your email (optional)
+
+Your portfolio must be hosted on GitHub Pages, and must include the following technical elements:

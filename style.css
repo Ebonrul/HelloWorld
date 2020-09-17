@@ -1,0 +1,136 @@
+*/* this is a CSS reset, used to 
+    make the page responsive */
+{
+    margin: 0;
+    padding: 0;
+    text-align: start;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+main/* main page layout */
+{
+    position: relative;
+    width: 100;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(114, 116, 87);
+    transition: 0.5s;
+}
+hr 
+{
+    height: 1px;
+    background-color: salmon;
+    border: none;
+}
+header
+{ /* sticking the menu at the top of the page */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header .logo
+{ /* sticking the logo opposite the menu */
+    position: relative;
+    max-width: 80px;
+}
+header ul
+{ /* making the menu respond to different monitors */
+    position: relative;
+    display: flex;
+}
+header ul li
+{ /* keeping different monitors from messing up my buttons */
+    list-style: none;
+}
+header ul li a
+{ /* finally, what the nav links look like */
+    display:inline-block;
+    color: white;
+    font-weight: 400;
+    margin-left: 40px;
+    text-decoration: none;
+}
+.content
+{/* Seperate my image from my text */
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.content .textbox
+{/* makes rules for this section */
+    position: relative;
+    max-width: 600px;
+}
+.content .textbox h2
+{/* rules for my name*/
+    color: white;
+    font-size: 2em;
+    line-height: 1.5em;
+}
+.content .textbox h2 span
+{/* use a 'span' to change up the header a little */
+    color: salmon;
+    font-size: .5em;
+}
+.content .textbox p
+{/* change the color of the paragraph text */
+    color: white;
+}
+.content .textbox a
+{/* sexy up my button */
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    background: salmon;
+    color: white;
+    border-radius: 40px;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;   
+}
+.content .imageBox
+{/* make these elements responsive to different screens */
+    width: 600px;
+    display: flex;
+    padding-right: 50px;
+    margin-top: 50px;
+    justify-content: flex-end;
+}
+.content .imageBox img
+{/* setting the size of the image itself */
+    max-width: 400px;
+}
+footer
+{/* construct a 'footer' pseudo-class */
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+}
+footer li
+{/* make contact buttons */
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+footer li:hover
+{/* make the buttons bouncy */
+    transform: translateY(-15px);
+}
+footer li img
+{/* make the images fit */
+    max-width: 40px;
+}

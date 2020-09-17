@@ -8,5 +8,6 @@ Here's hoping it makes the cut. :pray:
 1. https://github.com/Ebonrul/HelloWorld/
 2. https://ebonrul.github.io/HelloWorld/
 
-####:man_facepalming: Since the website is hosted on github and points to the repo, I wasn't sure if I was supossed to submit both.
+:man_facepalming: 
+since the website is hosted on github and points to the repo, I wasn't sure if I was supossed to submit both.
 

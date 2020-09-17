@@ -9,5 +9,5 @@ Here's hoping it makes the cut. :pray:
 2. https://ebonrul.github.io/HelloWorld/
 
 :man_facepalming: 
-since the website is hosted on github and points to the repo, I wasn't sure if I was supossed to submit both.
+since the website is hosted on github and points back to it, I wasn't sure if I was supossed to submit both.
 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Hello World 2.0</title>
+</head>
+
+<body>
+    <a name="top"></a>
+    <header>
+        <h1>Scott Banks</h1>
+        <nav>
+            <ul>
+                <li><a href="#top">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main class="bookshelf">
+        <section id="home" class="shelf">
+            <img src="./images/logo.png" alt="Code logo" class="center">
+            <p class="quote">what does not challenge you<span> does not change you</span></p>
+        </section>
+        <section id="about" class="shelf">
+            <h5>About</h5>
+            <p>My name is Scott Banks and I am a web developer from Detroit, Michigan. I am currently enrolled in the Engineering Immersion Course at Thinkful.
+            <ul class=links>
+                <li><a href="https://linkedin.com/in/scott-banks-47929a1b7"><img src="./images/linked.png"></a></li>
+                <li><a href="https://github.com/Ebonrul"><img src="./images/github.png"></a></li>
+            </ul>
+        </section>
+            <section id="portfolio" class="shelf">
+            <h5>Portfolio</h5>
+            <p>Poindexter Online</p>
+            <img src="./images/symbol.png" alt="placeholder image" class="center">
+        </section>
+            <section id="contact" class="shelf">
+            
+                <form class="contact_form" action="https://formspree.io/f/xvovqonp" method="POST"> 
+                     <h1>Contact Me</h1>
+                     <div>
+                         <label>Name:</label></br>
+                         <input type="text" name="_name" value="" placeholder="Enter Your Name">
+                        </div>
+                     <div>
+                         <label>Email:</label></br>
+                         <input type="email" name="_replyto" value="" placeholder="Enter Your Email">
+                        </div>
+                     <div>
+                         <label>Message:</label></br>
+                         <textarea placeholder="Enter Your Message"></textarea>
+                        </div>
+                        <button type="submit">Send</button>
+                    </form>
+        </section>
+    </main>
+</body>
+</html>

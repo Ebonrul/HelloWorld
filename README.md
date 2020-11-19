@@ -1,7 +1,7 @@
-# This is my Reactive Website! :+1:
+# This is my Developer Website! :+1:
 _this is the revised version_
 
-Cut it down to the bone and made a basic reactive website.
+Cut it down to the bone and made a basic website.
 :heavy_check_mark: All Requirements met
 
 ## The links for this page are as follows...

@@ -1,0 +1,146 @@
+/* Your styles should be mobile-first and responsive */
+
+/** 
+  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
+  *
+  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
+  *
+*/
+@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@700&display=swap');
+
+ body {
+   margin: 0;
+   font-size: 16px;
+   background-color: grey;
+   font-family: 'Goldman',
+   cursive;
+   font-weight: 400;
+ }
+
+ * {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   outline: none;
+ }
+
+ .game-screen{
+   max-width: 700px;
+   background-color: #FFF;
+   margin: 40px auto;
+   padding: 30px;
+   border-radius: 10px;
+ }
+
+ .game-screen.hide{
+   display: none;
+ }
+
+ .start-screen h3{
+   font-size: 18px;
+   color:#000;
+   font-weight: 700;
+   margin-bottom: 15px;
+   line-height: 25px;
+ }
+
+.start-screen p{
+   font-size: 16px;
+   margin-bottom: 10px;
+   line-height: 22px;
+   color:#000;
+   font-weight: 400;
+ }
+
+.start-screen p span{
+   font-weight: 500;
+ }
+
+.start-screen .btn{
+  margin-top: 20px;
+}
+
+ .btn{
+   padding: 15px 45px;
+   background-color: #000;
+   color:#fff;
+   border:none;
+   margin:15px 0;
+   border-radius: 10px;
+   font-weight: 700;
+   cursor: pointer;
+ }
+ .btn:hover{
+   background-color: grey;
+   color: #000;
+   border:4px;
+ }
+ .continue-btn.hide{
+   display: none;
+ }
+ .question-screen .question-number,
+ .question-screen .question-text,
+ .question-screen .answer-box,
+ .question-screen .continue-btn,
+ .question-screen .answer-box{
+   width: 100%;
+   float: left;  
+ }
+
+ .question-screen .question-number{
+   font-size: 18px;
+   color: blue;
+   font-weight: 700;
+   border-bottom:1px solid #000;
+   padding-bottom: 10px;
+   line-height: 25px;
+ }
+ .question-screen .question-text{
+   font-size: 22px;
+   padding: 20px 0;
+   margin: 0;
+   line-height: 28px;
+   font-weight: 400;
+ }
+ .question-screen .answer-box .answer{
+   background-color: grey;
+   cursor: pointer;
+   padding: 15px;
+   font-size: 16px;
+   line-height: 22px;
+   border-radius: 5px;
+   margin-bottom: 10px;
+ }
+ .question-screen .answer-tracker div{
+   height: 40px;
+   width: 40px;
+   display: inline-block;
+   background-color: grey;
+   border-radius: 50%;
+   margin-right: 15px;
+ }
+
+ .total-screen{
+   text-align: center;
+ }
+ .total-screen.hide{
+   display: none;
+ }
+ .total-screen h1{
+  font-size: 30px;
+  line-height: 42px;
+ }
+ .total-screen table{
+   width: 100%;
+   margin: 30px 0;
+ }
+ .total-screen table td{
+   border: 1px solid #000;
+   padding: 8px 18px;
+   font-size: 18px;
+ }
+ .total-screen .btn{
+   margin-right: 20px;
+
+ }

@@ -6,141 +6,236 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+/*********FONTS**********/
+
 @import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@700&display=swap');
 
- body {
+body {
    margin: 0;
    font-size: 16px;
    background-color: grey;
-   font-family: 'Goldman',
-   cursive;
+   font-family: 'Goldman', cursive;
    font-weight: 400;
- }
-
- * {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-   outline: none;
- }
-
- .game-screen{
-   max-width: 700px;
-   background-color: #FFF;
-   margin: 40px auto;
-   padding: 30px;
-   border-radius: 10px;
- }
-
- .game-screen.hide{
-   display: none;
- }
-
- .start-screen h3{
-   font-size: 18px;
-   color:#000;
-   font-weight: 700;
-   margin-bottom: 15px;
-   line-height: 25px;
- }
-
-.start-screen p{
-   font-size: 16px;
-   margin-bottom: 10px;
-   line-height: 22px;
-   color:#000;
-   font-weight: 400;
- }
-
-.start-screen p span{
-   font-weight: 500;
- }
-
-.start-btn{
-  margin-top: 20px;
+   text-align: center;
 }
 
- .btn{
+.wrapper {
+  width: 90%;
+  margin: auto;
+}
+
+
+.group {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFF;
+  border-radius: 0 0 5px 5px;
+  margin: 5px;
+}
+
+.group-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #FFF;
+  border-radius: 5px 5px 0 0;
+  margin: 5px;
+  margin-bottom: 0;;
+}
+
+.item {
+  flex: 2;
+
+  border-radius: 0 0 5px 5px;
+  background-color: #FFF;
+  margin: 0px;
+}
+
+.center {
+  text-align: center;
+}
+
+.no-margin-top {
+  margin-top: 0;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: bolder;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+h1, h2, p {
+  margin: 10px;
+}
+
+button {
+  margin: 10px;
+  margin-top: 0;
+}
+
+.start-button {
+  background: #FFF;
+  border: 0;
+  color: #0041aa;
+  font-weight: bold;
+  padding: 0;
+}
+
+.radio-button {
    padding: 15px 45px;
    background-color: #000;
    color:#fff;
    border:none;
-   margin:15px 0;
+   margin:15px 15px;
    border-radius: 10px;
    font-weight: 700;
    cursor: pointer;
- }
- .btn:hover{
-   background-color: grey;
+   display: block;
+   display: inline-block;
+}
+.radio-button:hover {
+   background-color: blue;
    color: #000;
    border:4px;
- }
- .continue-btn.hide{
-   display: none;
- }
- .question-screen .question-number,
- .question-screen .question-text,
- .question-screen .answer-box,
- .question-screen .continue-btn,
- .question-screen .answer-box{
-   width: 100%;
-   float: left;  
- }
+}
 
- .question-screen .question-number{
-   font-size: 18px;
-   color: blue;
-   font-weight: 700;
-   border-bottom:1px solid #000;
-   padding-bottom: 10px;
-   line-height: 25px;
- }
- .question-screen .question-text{
-   font-size: 22px;
-   padding: 20px 0;
-   margin: 0;
-   line-height: 28px;
-   font-weight: 400;
- }
- .question-screen .answer-box .answer{
-   background-color: grey;
-   cursor: pointer;
-   padding: 15px;
-   font-size: 16px;
-   line-height: 22px;
-   border-radius: 5px;
-   margin-bottom: 10px;
- }
- .question-screen .answer-tracker div{
-   height: 40px;
-   width: 40px;
-   display: inline-block;
-   background-color: grey;
-   border-radius: 50%;
-   margin-right: 15px;
- }
+img {
+  border-radius: 2px;
+  /*
+  border: solid black;
+  */
+  margin: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  width: 95%;
+}
 
- .total-screen{
-   text-align: center;
- }
- .total-screen.hide{
-   display: none;
- }
- .total-screen h1{
-  font-size: 30px;
-  line-height: 42px;
- }
- .total-screen table{
-   width: 100%;
-   margin: 30px 0;
- }
- .total-screen table td{
-   border: 1px solid #000;
-   padding: 8px 18px;
-   font-size: 18px;
- }
- .total-screen .btn{
-   margin-right: 20px;
 
- }
+@media all and (min-width: 600px) {
+
+  body {
+    font-size: 18px;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    /* border: 0.5px solid #000; */
+    border-radius: 10px;
+    margin: 10px;
+    /* background-color: #f4f4f4; */
+  }
+
+  .group-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #FFF;
+    /* border: 0.5px solid #000; */
+    border-radius: 10px;
+    margin: 10px;
+  }
+
+  .item {
+    flex: 1;
+    /*
+    border: 0.5px solid #000;
+    */
+    border-radius: 10px;
+    background-color: #FFF;
+    align-items: center;
+  }
+  
+  .item-double {
+    flex: 2;
+    /*
+    border: 0.5px solid #000;
+    */
+    border-radius: 10px;
+    background-color: #FFF;
+    margin: 20px;
+  }
+
+  .item {
+    flex: 1;
+    /* border: 0.5px solid #000; */
+    border-radius: 10px;
+    background-color: #FFF;
+  }
+
+  .item-double {
+    flex: 2;
+    /* border: 0.5px solid #000; */
+    border-radius: 10px;
+    background-color: #FFF;
+    margin: 10px;
+  }
+
+  .no-margin-top {
+    margin-top: 0;
+  }
+  
+  .no-margin-bottom {
+    margin-bottom: 0;
+  }
+
+  h1 {
+    align-self: center;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: bolder;
+    color: black;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  h1, h2, p {
+    margin: 15px 15px 15px 30px;
+  }
+
+  button {
+    margin: 15px 15px 15px 30px;
+    margin-top: 0;
+  }
+
+  .start-button {
+    background: #FFF;
+    border: 0;
+    color: #0041aa;
+    font-weight: bold;
+    padding: 0;
+  }
+
+  .radio-button {
+    margin: 15px 15px 15px 30px;
+  }
+}
+
+@media all and (min-width: 1200px) {
+
+  body {
+    font-size: 18px;
+  }
+  
+  .wrapper {
+    width: 50%;
+  }
+
+}

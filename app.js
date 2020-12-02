@@ -1,10 +1,10 @@
+'use strict';
+
 /**
  * Example store structure
  */
-'use strict';
-
 const store = {
-  // 5 or more questions are required
+	// 5 or more questions are required
   questions: [
     {
       question: 'What does the IP in TCP/IP stand for?',
@@ -14,7 +14,9 @@ const store = {
         'Internet Protocol',
         'Internal Process'
       ],
-      correctAnswer: 'Internet Protocol'
+      correctAnswer: 'Internet Protocol',
+      correct: 'Yep, the IP in TCP/IP stands for Internet Protocol.',
+      incorrect: 'Close, but the IP in TCP/IP stands for Internet Protocol,'
     },
     {
       question: 'Which is not a layer in the OSI model?',
@@ -24,7 +26,9 @@ const store = {
         'The Session Layer',
         'The Network Layer'
       ],
-      correctAnswer: 'The Transit Layer'
+      correctAnswer: 'The Transit Layer',
+      correct: 'Nice catch. The Transit Layer is part of the TCP/IP model, not the OSI model.',
+      incorrect: 'Not quite. It was the Transit Layer.'
     },
     {
       question: 'What is the standard port used for HTTPS protocol',
@@ -34,7 +38,9 @@ const store = {
         '23',
         '22'
       ],
-      correctAnswer: '443'
+      correctAnswer: '443',
+      correct: 'Correct! Port 443 is the default port for HTTPS traffic.',
+      incorrect: 'Port numbers can be tricky. Port 443 is the default port for HTTPS traffic.'
     },
     {
       question: 'What is the standard port used for HTTP protocol',
@@ -44,7 +50,9 @@ const store = {
         '23',
         '22'
       ],
-      correctAnswer: '80'
+      correctAnswer: '80',
+      correct: 'You got it! Port 80 is the default for HTTP traffic.',
+      incorrect: 'Very good guess, but port 80 is the default for HTTP traffic.',
     },
     {
       question: 'What is the standard port used for Telnet protocol',
@@ -54,7 +62,9 @@ const store = {
         '23',
         '22'
       ],
-      correctAnswer: '23'
+      correctAnswer: '23',
+      correct: 'Way to go! Port 23 is the default port for Telnet Traffic.',
+      incorrect: 'Port numbers can be tricky. Port 23 is the default port for Telnet Traffic.',
     },
     {
       question: 'What is the standard port used for SSH protocol',
@@ -64,7 +74,9 @@ const store = {
         '23',
         '22'
       ],
-      correctAnswer: '22'
+      correctAnswer: '22',
+      correct: "You're right! Port 22 is the default port for SSH traffic.",
+      incorrect: 'Very good guess, but port 22 is the default port for SSH traffic.',
     },
     {
       question: 'What is the difference between UDP and TCP',
@@ -74,7 +86,9 @@ const store = {
         'UDP is slower than TCP',
         'TCP does not sequence packets before sending'
       ],
-      correctAnswer: 'TCP is connection-oriented and UDP is connection-less'
+      correctAnswer: 'TCP is connection-oriented and UDP is connection-less',
+      correct: "Nothin' gets past you! TCP needs a connection while UDP doesn't.",
+      incorrect: 'This one was kinda tricky. TCP requires a connection whereas UDP is a connection-less protocol.',
     },
     {
       question: 'Two devices are in network if',
@@ -84,7 +98,9 @@ const store = {
         'IDs of the processes running on different devices are same',
         'none of these answers are correct'
       ],
-      correctAnswer: 'a process in one device is able to exchange information with a process in another device'
+      correctAnswer: 'a process in one device is able to exchange information with a process in another device',
+      correct: "That's right! if a process on one device can exchange data with a process running on another device, then those devices are 'networked'.",
+      incorrect: 'Sorry, wrong answer. Remember that if a process on one device can exchange data with a process running on another device, then those devices are "networked".',
     },
     {
       question: 'In a network a node is...',
@@ -94,7 +110,9 @@ const store = {
         'the computer that terminates the data',
         'all of these answers are correct'
       ],
-      correctAnswer: 'all of these answers are correct'
+      correctAnswer: 'all of these answers are correct',
+      correct: 'No fooling you. All of these answers are correct.',
+      incorrect: 'Gotcha! All of those answers were correct.',
     },
     {
       question: 'A device that forwards packets between networks by processing the routing information included in the packet is called a...',
@@ -104,267 +122,216 @@ const store = {
         'bridge',
         'router'
       ],
-      correctAnswer: 'router'
+      correctAnswer: 'router',
+      correct: 'Bingo! A router uses routing information in a packet to send it forward through the network.',
+      incorrect: "Not quite right.  It's a router that uses the routing information in a packet to forward it through the network.",
     }
   ],
-
+  feedback: '',
+  questionCompleted: false,
   quizStarted: false,
   questionNumber: 0,
   score: 0
 };
 
 /**
- * 
+ *
  * Technical requirements:
- * 
- * Your app should include a render() function, that regenerates the view each time the store is updated. 
- * See your course material and access support for more details.
+ *
+ * Your app should include a render() function, that regenerates the view each time the store is updated.
+ * See your course material, consult your instructor, and reference the slides for more details.
  *
  * NO additional HTML elements should be added to the index.html file.
  *
  * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
  *
  * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
- * 
+ *
  */
-
-
-function main() {
-
-  renderQuiz();
-  handleQuizStart();
-  handleQuestionSubmit();
-  handleNextQuestionSubmit();
-  handleNewQuizReset();
-}
-
-$(main);
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
-
-function generateStartingPage() {
-  // hand out the start page
-  return `<div class="home-screen game-screen">
-  <h3>Network Knowledge Quiz</h3>
-  <p>This is a multiple-choice quiz on the subject of networking<span class="total-question"></span></p>
-  <button id="startQuiz">Start Quiz</button>
-</div>`;
+function generateQuizAppPage(item) {
+	if (!item.quizStarted) {
+		return generateStartPage();
+	} else if (
+		item.quizStarted &&
+		item.questionNumber < item.questions.length + 1
+	) {
+		return generateQuestionPage();
+	} else {
+		return generateEndPage();
+	}
 }
 
-// populate the question array
-
-function generateQuestionPage() {
-  // start point
-  let currentQuestion = store.questions[store.questionNumber];
-
-  // randomize the questions
-  let answers = currentQuestion.answers.map((answer, index) => {
-    // populate the answers with the data from the store
-    if (index === 0) {
-      return `<input type="radio" id="${answer}" name="answer" value=${answer} required>
-    <label for="${answer}">${answer}</label><br />`;
-    }
-
-    return `<input type="radio" id="${answer}" name="answer" value=${answer}>
-    <label for="${answer}">${answer}</label><br />`;
-  });
-
-  // track score to remaining questions
-  return `
-  <div class="questionSection">
-    <div class="quizStatusSection">
-      <div class="currentQuestion">
-        <p>Question ${store.questionNumber + 1} out of ${
-    store.questions.length
-  }</p>
-      </div>
-      <div class="currentScore">
-        <p>Current Score:</br> ${store.score} correct, ${
-    store.questionNumber - store.score
-  } incorrect</p>
-      </div>
+function generateStartPage() {
+	return `
+  <div class="wrapper">
+    <div class="group no-margin-top">
+  <h3>Network Knowledge Quiz</h3>
+  <p>This is a multiple-choice quiz on the subject of networking<span class="total-question"></span></p>
+        <button class="js-start start-button">START</button>
     </div>
-    <h2>${currentQuestion.question}</h2>
-    <form class="answerOptions">
-      ${answers.join('')}
-      <button id="submitAnswer" class="hideButton">SUBMIT ANSWER</button>
-    </form>
   </div>`;
 }
 
-// respond to both right and wrong answers
-
-function generateGoodFeedback() {
-  let currentCorrect = store.questions[store.questionNumber].correctAnswer;
-  return `<div class="feedbackSectionCorrect">
-  <h2 class="right">Right Answer!</h2>
-  <p>${currentCorrect} is the correct answer!</p>
-  <button id="nextQuestion">NEXT QUESTION</button>
-</div>`;
-}
-
-function generateBadFeedBack() {
-  let currentCorrect = store.questions[store.questionNumber].correctAnswer;
-
-  return `<div class="feedbackSectionIncorrect">
-  <h2 class="wrong">Wrong Answer!</h2>
-  <p>The correct answer is "${currentCorrect}"</p>
-  <button id="nextQuestion">NEXT QUESTION</button>
-</div>`;
-}
-
-function generateFeedbackSection(choice, answer) {  // check answer
-  let feedbackHtml = ``;
-  $('.hideButton').hide();
-  if (choice === answer) { //good outcome
-    feedbackHtml = generateGoodFeedback();
-    $('main').append(feedbackHtml);
-    store.questionNumber += 1;
-    store.score += 1;
-
-  } else { //bad outcome
-    feedbackHtml = generateBadFeedBack();
-    $('main').append(feedbackHtml);
-    store.questionNumber += 1;
-  }
-}
-
-// Populate results
-
-function generateResultsPage() {
-  if (store.score === store.questions.length) {
-    return `<div class="resultsSection">
-    <h2>PERFECT!</h2>
-    <p>Here are your results:</p>
-    <div class="finalPercentCorrect">
-    <h3>${store.score}0%</h3>
-    </div>
-    <p class="final-results">You got ${store.score} out of ${store.questions.length} correct.</p>
-    <p>Not bad, want to try Again?</p>
-    <button id="newQuiz">Try Again</button>
+function generateQuestionPage() {
+	if (store.questionCompleted) {
+		return `
+    <div class="wrapper">
+      <section class="group no-margin-top">
+        <article class="item">
+          <h2 class="">Question Number: ${store.questionNumber} of 10: ${
+			store.questions[store.questionNumber - 1].question
+		}</h2>
+          <p class="">Current Score: ${store.score} of 10</p>
+          <p class="">${store.feedback}</p>
+          <button class="js-next-question">Next question!</button>
+        </article>
+      </section>
     </div>`;
-  } else if (store.score === 0) {
-    return `<div class="resultsSection">
-<h2>Ouch!</h2>
-<p>No big deal, you can try again.</p>
-<button id="newQuiz">Try Again</button>
-</div>`;
-  } else {
-    return `<div class="resultsSection">
-<h2>Good hustle out there!</h2>
-<p>Here's how ya did...</p>
-<div class="finalPercentCorrect">
-<h3>${store.score}0%</h3>
-</div>
-<p class="final-results">You got ${store.score} out of ${store.questions.length} correct.</p>
-<p>Click the button to give it another shot.</p>
-<button id="newQuiz">Try Again</button>
-</div>`;
-  }
+	}
+
+	return `
+  <div class="wrapper">
+    <section class="group no-margin-top">
+      <article class="item">
+        <h2 class="">Question Number: ${store.questionNumber} of 10: ${
+		store.questions[store.questionNumber - 1].question
+	}</h2>
+        <p class="">Current Score: ${store.score} of 10</p>
+        <form>
+          <div class="radio-button">
+            <input type="radio" id="1" name="answer" value="${
+							store.questions[store.questionNumber - 1].answers[0]
+						}" required>
+            <label for="1">${
+							store.questions[store.questionNumber - 1].answers[0]
+						}</label>
+          </div>
+          <div class="radio-button">
+            <input type="radio" id="2" name="answer" value="${
+							store.questions[store.questionNumber - 1].answers[1]
+						}">
+            <label for="2">${
+							store.questions[store.questionNumber - 1].answers[1]
+						}</label>
+          </div>
+          <div class="radio-button">
+            <input type="radio" id="3" name="answer" value="${
+							store.questions[store.questionNumber - 1].answers[2]
+						}">
+            <label for="3">${
+							store.questions[store.questionNumber - 1].answers[2]
+						}</label>
+          </div>
+          <div class="radio-button">
+            <input type="radio" id="4" name="answer" value="${
+							store.questions[store.questionNumber - 1].answers[3]
+						}">
+            <label for="4">${
+							store.questions[store.questionNumber - 1].answers[3]
+						}</label>
+          </div>
+          <div>
+          ${
+						store.questionCompleted
+							? ''
+							: '<button type="submit">Check your answer!</button>'
+					}
+          </div>
+        </form>
+      </article>
+  </div>`;
 }
 
-// RESET QUIZ
+function generateEndPage() {
+	return `
+  <div class="wrapper">
+  <section class="group">
+    <div class="item">
+      <h2 class="">You scored ${store.score} out of ${
+		store.questions.length
+	}!</h2>
+      <p class="">${
+				store.score == store.questions.length
+					? "Perfect!"
+					: 'Not bad.  CLick the button below to try again.'
+			}</p>
+      <button class="js-restart start-button">Try Again</button>
+    </div>
+  </section>
+</div>`;
+}
+
+/********** RENDER FUNCTION(S) **********/
+
+// This function conditionally replaces the contents of the <main> tag based on the state of the store
+
+function renderQuizApp() {
+	const mainContent = generateQuizAppPage(store); //someFunction stands in for the template generator
+	$('main').html(mainContent);
+}
+
+/********** EVENT HANDLER FUNCTIONS **********/
+
+// These functions handle events (submit, click, etc)
+
+function startQuiz() {
+	$('main').on('click', '.js-start', (event) => {
+		store.quizStarted = true;
+		store.questionNumber += 1;
+		store.previousScore = store.currentScore;
+		renderQuizApp();
+	});
+}
+
+function submitUserAnswer() {
+	$('main').on('submit', (event) => {
+		event.preventDefault();
+		const userAnswer = $(':checked').val();
+		checkUserAnswer(userAnswer);
+		renderQuizApp();
+	});
+}
+
+function checkUserAnswer(userAnswer) {
+	if (userAnswer === store.questions[store.questionNumber - 1].correctAnswer) {
+		store.score += 1;
+		store.feedback = store.questions[store.questionNumber - 1].correct;
+		store.questionCompleted = true;
+	} else {
+		store.feedback = store.questions[store.questionNumber - 1].incorrect;
+		store.questionCompleted = true;
+	}
+}
+
+function goToNextQuestion() {
+	$('main').on('click', '.js-next-question', (event) => {
+		store.feedback = '';
+		store.questionCompleted = false;
+		store.questionNumber += 1;
+		renderQuizApp();
+	});
+}
 
 function resetQuiz() {
-  $('main').empty();
-  store.quizStarted = false;
-  store.questionNumber = 0;
-  store.score = 0;
-  renderQuiz();
+	$('main').on('click', '.js-restart', (event) => {
+		store.feedback = '';
+		store.questionCompleted = false;
+		store.questionNumber = 0;
+		store.quizStarted = false;
+		store.score = 0;
+		renderQuizApp();
+	});
 }
 
-
-/* RENDERS */
-
-// QUIZ
-
-function renderQuiz() {
-  let html = ``;
-  if (!store.quizStarted) {
-    html = generateStartingPage();
-    $('main').html(html);
-  } else if (store.quizStarted) {
-    html = generateQuestionPage();
-    $('main').html(html);
-  }
+function quizAppFunctions() {
+	renderQuizApp();
+	startQuiz();
+	submitUserAnswer();
+	goToNextQuestion();
+	resetQuiz();
 }
 
-// RESULTS
-
-function renderResultsPage() {
-  let html = ``;
-  html = generateResultsPage();
-  $('main').html(html);
-}
-
-
-
-/* HANDLERS */
-
-// START
-
-function handleQuizStart() {
-  $('main').on('click', '#startQuiz', function (event) {
-    store.quizStarted = true;
-    shuffle(store.questions);
-
-
-    renderQuiz();
-  });
-}
-
-// ANSWERS
-
-function handleQuestionSubmit() {
-  $('main').on('submit', '.answerOptions', function (event) {
-    event.preventDefault();
-    let currentQuestionAnswer =
-      store.questions[store.questionNumber].correctAnswer;
-    let userChoice = $('input[name="answer"]:checked').attr('id');
-    generateFeedbackSection(userChoice, currentQuestionAnswer);
-  });
-}
-
-// NEXT
-
-function handleNextQuestionSubmit() {
-  let storeLength = store.questions.length;
-
-  $('main').on('click', '#nextQuestion', function (event) {
-    event.preventDefault();
-    if (store.questionNumber === storeLength) {
-      renderResultsPage();
-    } else {
-      renderQuiz();
-    }
-  });
-}
-
-// NEW QUIZ
-
-function handleNewQuizReset() {
-  $('main').on('click', '#newQuiz', function (event) {
-    event.preventDefault();
-
-    resetQuiz();
-  });
-}
-
-// SHUFFLE
-
-function shuffle(array) {
-  let currentIndex = array.length,
-    temporaryValue,
-    randomIndex;
-
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
+$(quizAppFunctions);

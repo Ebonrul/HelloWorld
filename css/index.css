@@ -3,9 +3,7 @@
 
 /***** Globals *****/
 
-* {
-  background-color: beige;
-}
+
 /* Header font and margin */
 h1 {
   font-family: 'Langar',cursive;
@@ -20,12 +18,11 @@ body {
   font-family: 'Texturina', serif;
 }
 
-/* Remove default padding from uls where bullets normally are */
+
 ul {
   padding: 0;
 }
 
-/* Center labels so they look good */
 #filter-label {
   text-align: right;
   margin-top: 9.8px;
@@ -34,34 +31,27 @@ ul {
   float: right;
 }
 
-/***** New bookmark form *****/
-/* Blocks the form container div so we can center it */
 .form-container {
   display: block;
   text-align: center;
 }
 
-/* Center the form */
 form {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Removes bullets from new bookmark form and centers */
 .new-item-li {
   list-style-type: none;
   text-align: center;
 }
 
-/* Make the error message look like an error message */
 .error-message-container {
   color: darkred;
   font-weight: bold;
   text-align: center;
 }
 
-/***** Controls *****/
-/* Add some space between new bookmark button and filter */
 .controls {
   text-align: left;
 }
@@ -70,7 +60,6 @@ form {
   margin-bottom: 1.5em;
 }
 
-/* Add new bookmark button styles */
 .add-button {
   display: block;
   margin-left: auto;
@@ -84,22 +73,20 @@ form {
   float: right;
 }
 
-/***** Bookmarks *****/
+
 .bookmark-container {
   border-top: 3px solid beige;
   padding-top: 1em;
   margin-top: 2em;
 }
 
-/* Makes the drop down look not tiny */
 select {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-/***** Bookmarks list *****/
-/* Styles for the bookmark headers */
+
 .header-button {
   width: 100%;
   height: 100%;
@@ -110,7 +97,7 @@ select {
   background-color: #b9b9b9;
 }
 
-/* Styles for the bookmarks */
+
 .bookmark-header {
   background-color: beige;
   border: 2px solid #000000;
@@ -142,8 +129,7 @@ select {
   float: right;
 }
 
-/***** Utility *****/
-/* Hidden class */
+
 .hidden {
   display: none;
 }
@@ -160,7 +146,6 @@ fieldset {
   border: 2px solid beige;
 }
 
-/***** Style inputs *****/
 input[type='text'],
 input[type='url'],
 textarea,
@@ -170,7 +155,6 @@ select {
   margin-bottom: 0.5em;
   text-align: center;
   width: 184.417px;
-  /* float: right; */
 }
 
 input[type='text'],
@@ -206,7 +190,6 @@ label {
   float: right;
 }
 
-/***** Style buttons *****/
 button {
   background-color: transparent;
   border: 3px solid beige;

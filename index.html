@@ -1,66 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bookmarks</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,600,700,800" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>
-  <link rel='stylesheet' href='css/grid.css'>
-  <link rel='stylesheet' href='css/index.css'>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Hello World 2.0</title>
 </head>
 
 <body>
-  <header class='row' role='banner'>
-    <h1>Bookmarker</h1>
-  </header>
+    <a name="top"></a>
+    <header>
+        <h1>Scott Banks</h1>
+        <nav>
+            <ul>
+                <li><a href="#top">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
 
-    <section class="row">
-      <div class='controls'>
-        <button id='js-new-bookmark'>NEW BOOKMARK</button>
-
-
-        <select class='filter-control' id='js-filter-control' name='filter' aria-label='Filter ratings by minimum rating'>
-          <option value='0'>All</option>
-          <option value='5'>5 stars</option>
-          <option value='4'>4+ stars</option>
-          <option value='3'>3+ stars</option>
-          <option value='2'>2+ stars</option>
-        </select>
-        <label for='filter-control' id='filter-label'>Filter </label>
-
-      </div>
-    </section>
-
-    <section class='row'>
-      <div id='js-form-container' class='form-container'></div>
-    </section>
-
-    <section class='row error-message-container'>
-      <span id='js-error-message'>
-      </span>
-    </section>
-
-    <section class="row">
-      <div class='bookmark-container'>
-        <ul class='js-bookmarks-container'></ul>
-      </div>
-    </section>
-
-  <main role='main'></main>
-
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/extend.js"></script>
-  <script type="text/javascript" src="js/store.js"></script>
-  <script type="text/javascript" src="js/generator.js"></script>
-  <script type="text/javascript" src="js/bookmarks.js"></script>
-  <script type="text/javascript" src="js/api.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
+    </header>
+    <main class="bookshelf">
+        <section id="home" class="shelf">
+            <img src="./images/logo.png" alt="Code logo" class="center">
+            <p class="quote">what does not challenge you<span></br>does not change you</span></p>
+        </section>
+        <section id="about" class="shelf">
+            <h5>About</h5>
+            <p>My name is Scott Banks and I am a web developer from Detroit, Michigan. I am currently enrolled in the Engineering Immersion Course at Thinkful.</p>
+            <ul>
+                <li>I enjoy gaming, literature and art. I try to incorporate as many influences into my code so as to better solve problems.</li></br>
+                <li>I think that code can be used to solve a great many problems that affect my community, such as educational disparities and a lack of access to resources.</li></br>
+                <li>When I'm not coding, I enjoy spending time with family, traveling, and playing games.</li></br>
+                <li><strong>You can reach me at: </strong><em>psswiftpeter@gmail.com</em></li>
+            </ul>
+            <ul class=links>
+                <li><a href="https://linkedin.com/in/scott-banks-47929a1b7"><img src="./images/linked.png"></a></li>
+                <li><a href="https://github.com/Ebonrul"><img src="./images/github.png"></a></li>
+            </ul>
+        </section>
+            <section id="portfolio" class="shelf">
+            <h5>Services</h5>
+            <ul>
+                <li>Web Design</li>
+                <li>Software Development</li>
+                <li>Digital Marketing</li>
+            </ul>
+            <h2>Network Quiz App</h2>
+            <a href="www.google.com"><img src="./images/symbol.png" alt="placeholder image" class="center"></a>
+            <p>This is my entry in the Week 2 Quiz App Project.</p>
+        </section>
+            <section id="contact" class="shelf">
+            
+                <form class="contact_form" action="https://formspree.io/f/xvovqonp" method="POST"> 
+                     <h1>Contact Me</h1>
+                     <div>
+                         <label>Name:</label></br>
+                         <input type="text" name="_name" value="" placeholder="Enter Your Name">
+                        </div>
+                     <div>
+                         <label>Email:</label></br>
+                         <input type="email" name="_replyto" value="" placeholder="Enter Your Email">
+                        </div>
+                     <div>
+                         <label>Message:</label></br>
+                         <textarea placeholder="Enter Your Message"></textarea>
+                        </div>
+                        <button type="submit">Send</button>
+                    </form>
+        </section>
+        <div data-ng-bind-html="::something"></div>
+    </main>
 </body>
-
 </html>
